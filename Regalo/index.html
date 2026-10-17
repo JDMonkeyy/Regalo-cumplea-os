@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120e1d">
+  <title>Regalo</title>
+  <meta name="description" content="Una página con música y tarjetas que se voltean.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Fondo personalizado (la imagen se cambia en css/style.css → .bg) -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Canción (cámbiala por tu archivo en la carpeta audio/) -->
+  <audio id="song" src="audio/miku.mp3" loop preload="none"></audio>
+
+  <!-- ============ PORTADA ============ -->
+  <header class="hero">
+    <h1 class="hero__title">FELIZ CUMPLEAÑOS #23 MI AMOR</h1>
+
+    <button id="playBtn" class="play" type="button" aria-label="Reproducir música" aria-pressed="false">
+      <span class="play__ring" aria-hidden="true"></span>
+      <span class="play__ring play__ring--late" aria-hidden="true"></span>
+      <svg class="play__icon icon-play" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 5.5v13a1 1 0 0 0 1.52.85l10.4-6.5a1 1 0 0 0 0-1.7L9.52 4.65A1 1 0 0 0 8 5.5Z" fill="currentColor"/>
+      </svg>
+      <svg class="play__icon icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="6" y="5" width="4.2" height="14" rx="1.2" fill="currentColor"/>
+        <rect x="13.8" y="5" width="4.2" height="14" rx="1.2" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <p id="playHint" class="hero__hint" role="status">Da click para comenzar Amor</p>
+
+  </header>
+
+  <!-- ============ TARJETAS ============ -->
+  <main id="tarjetas" class="cards-section" hidden>
+    <h2 class="cards-section__title">Regalitos</h2>
+    <p class="cards-section__lead">Da click en cada tarjeta para ver su contenido</p>
+
+    <ul class="cards">
+
+      <!-- ===== TARJETA 1 ===== -->
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 1" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta7.jpg" alt="Descripción de la imagen trasera 1" loading="lazy">
+              <span class="card__text">Hoy es un día muy especial, porque es el día en que nació una persona que, sin saberlo, algún día se convertiría en una de las partes más bonitas de mi vida. Me siento muy afortunado de poder compartir contigo este cumpleaños y de tener la oportunidad de recordarte lo mucho que te amo. Espero que la vida te regale tanta felicidad como la que tú me has dado desde que llegaste a mi mundo. Feliz cumpleaños, mi amor.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <!-- ===== TARJETA 2 ===== -->
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 2" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta1.jpg" alt="Descripción de la imagen trasera 2" loading="lazy">
+              <span class="card__text">Hoy quiero darte un regalo que va más allá de cualquier cosa material: quiero recordarte que tienes mi corazón, mi cariño y mis ganas de construir algo bonito contigo. A veces pienso en lo increíble que fue coincidir contigo entre tantas personas en este mundo. Si pudiera pedir algo para tu cumpleaños, pediría que nunca te falten motivos para sonreír y que me permitas seguir siendo parte de esa sonrisa. Te amo muchísimo, mi niña.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <!-- ===== TARJETA 3 ===== -->
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 3" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta2.jpg" alt="Descripción de la imagen trasera 3" loading="lazy">
+              <span class="card__text">Este cumpleaños es uno más de los muchos momentos bonitos que deseo compartir contigo. Me emociona imaginar todos los cumpleaños que todavía nos esperan, las fotografías que tomaremos, los abrazos que nos daremos y las historias que algún día recordaremos con una sonrisa. No sé exactamente qué nos tenga preparado el futuro, pero sí sé que quiero seguir caminando contigo y celebrar no solo tus cumpleaños, sino cada logro, cada sueño y cada pequeño momento de nuestra vida juntos.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <!-- ===== TARJETA 4 ===== -->
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta3.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Hay personas que llegan a nuestra vida y hacen que todo se sienta un poquito más bonito, y tú eres esa persona para mí. Tu forma de ser, tus ocurrencias, tu sonrisa y hasta esos pequeños detalles que quizá tú no notas hacen que te quiera cada día más. En tu cumpleaños quiero que recuerdes lo especial que eres, no solamente para mí, sino por la maravillosa persona que eres. Ojalá pudiera prestarte mis ojos por un momento para que vieras lo hermosa que eres desde mi perspectiva.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta4.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Si alguien me preguntara cuál es mi lugar favorito, probablemente pensaría en un sitio bonito, en un paisaje o en algún lugar especial. Pero la verdad es que mi lugar favorito puede ser cualquier sitio en el que esté contigo. Porque contigo he aprendido que sentirse en casa no siempre significa estar entre cuatro paredes, sino encontrar tranquilidad en una persona, sentir confianza en un abrazo y tener ganas de quedarse un ratito más. Gracias por hacerme sentir tantas cosas bonitas. Feliz cumpleaños, mi amor.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta5.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Si pudiera convertir todo lo que siento por ti en un regalo, te entregaría una caja llena de abrazos para tus días difíciles, besos para tus días felices, paciencia para los momentos complicados y amor para cada día de tu vida. También incluiría miles de palabras bonitas para que nunca olvidaras cuánto vales y lo importante que eres para mí. Como no existe una caja tan grande, hoy te regalo estas palabras con la esperanza de que, al leerlas, puedas sentir un poquito de todo el amor que llevo dentro por ti.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta6.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Cuando pienso en nosotros, no solamente recuerdo los grandes momentos, sino también esas pequeñas cosas que hacen especial nuestra relación: las conversaciones, las risas, las miradas, los mensajes inesperados y esos instantes en los que simplemente disfruto tenerte cerca. Son detalles que quizá parecen pequeños, pero que para mí significan muchísimo. En tu cumpleaños quiero que sepas que atesoro cada recuerdo contigo y que deseo seguir llenando nuestra historia de momentos que algún día podamos mirar atrás y decir: qué bonito fue vivir todo esto juntos.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta8.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Hoy comienza un nuevo año de tu vida, y deseo de todo corazón que esté lleno de oportunidades, sueños cumplidos, tranquilidad y muchísima felicidad. Deseo que nunca dudes de tus capacidades, que sigas creciendo y convirtiéndote en la persona que quieres ser, y que siempre encuentres razones para sentirte orgullosa de ti misma. Quiero acompañarte mientras persigues tus metas, celebrar tus victorias y abrazarte cuando las cosas no salgan como esperabas. Mereces cosas hermosas, mi amor, y espero poder compartir muchas de ellas contigo.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta9.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Amarte no significa que todos los días tengan que ser perfectos, sino que incluso en los días normales encuentro razones para seguir eligiéndote. Me gusta pensar que nuestro amor se construye poco a poco, con detalles, comprensión, respeto y ganas de estar juntos. En este día tan especial quiero renovar esa intención: seguir conociéndote, aprender contigo, mejorar por nosotros y cuidar lo que estamos construyendo. No te prometo una historia sin dificultades, pero sí quiero darte un amor sincero que tenga ganas de crecer a tu lado.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta10.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Entre todas las cosas que pueden pasarme durante el día, pensar en ti siempre tiene una manera especial de hacerme sonreír. A veces basta con recordar algo que dijiste, imaginar tu carita o pensar en la próxima vez que voy a verte para que mi día cambie por completo. No sé si te das cuenta de cuánto espacio ocupas en mis pensamientos, pero quiero que sepas que eres una de mis partes favoritas de la vida. Hoy, en tu cumpleaños, espero que recibas tanto amor que al final del día te duermas con el corazón llenito de felicidad.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta11.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Quiero vivir contigo muchas primeras veces y también repetir mil veces las cosas que ya nos hacen felices. Quiero conocer lugares a tu lado, tener citas sencillas, compartir nuestras metas, apoyarte en tus proyectos y crear recuerdos que sean solamente nuestros. Quiero seguir descubriendo nuevas razones para enamorarme de ti y que, con el paso del tiempo, nuestro amor se convierta en una historia llena de momentos que valga la pena recordar. Hoy celebro tu vida, pero también celebro la suerte de que nuestras vidas se hayan encontrado.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <li>
+        <button class="card" type="button" aria-pressed="false">
+          <span class="card__inner">
+            <span class="card__face card__front">
+              <img src="images/Tarjetas.jpg" alt="Descripción de la imagen 4" loading="lazy">
+              <span class="card__label"></span>
+            </span>
+            <span class="card__face card__back">
+              <img src="images/Tarjeta12.jpg" alt="Descripción de la imagen trasera 4" loading="lazy">
+              <span class="card__text">Hoy celebro tu cumpleaños, tu existencia y la felicidad de poder llamarte mi novia. Gracias por formar parte de mi vida y por darme la oportunidad de compartir contigo este sentimiento tan bonito. Ojalá pudiera detener el tiempo en algunos momentos a tu lado, pero como no puedo hacerlo, quiero aprovechar cada día para demostrarte cuánto te amo. Feliz cumpleaños, mi vida. Que este sea uno de los muchos cumpleaños en los que pueda abrazarte, besarte y recordarte que, entre tantas casualidades de la vida, tú eres una de mis favoritas. Te amo hoy, mañana y en todos los días que nos queden por compartir.</span>
+            </span>
+          </span>
+        </button>
+      </li>
+
+      <!-- Para agregar más tarjetas, copia un bloque <li>…</li> completo y pégalo aquí -->
+
+    </ul>
+    <header class="hero">
+        <h1 class="hero__title">TE AMO MI AMOR</h1>
+    </header>
+    
+  </main>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

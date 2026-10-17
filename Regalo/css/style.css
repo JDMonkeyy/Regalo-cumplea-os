@@ -1,0 +1,417 @@
+/* =========================================================
+   VARIABLES  (cambia colores y fuentes aquí)
+   ========================================================= */
+   :root {
+    --noche: #120e1d;
+    --ciruela: #2a1f45;
+    --lila: #cfbdff;
+    --niebla: #f6f3ff;
+    --rosa: #ff8fb1;
+  
+    --fuente-titulo: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --fuente-texto: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  
+    --tam-play: clamp(96px, 26vw, 144px);
+  }
+  
+  /* =========================================================
+     BASE
+     ========================================================= */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--niebla);
+    background: var(--noche);
+    overflow-x: hidden;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* Garantiza que el atributo hidden oculte aunque el elemento tenga display propio */
+  [hidden] {
+    display: none !important;
+  }
+  
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  
+  :focus-visible {
+    outline: 3px solid var(--lila);
+    outline-offset: 4px;
+  }
+  
+  /* =========================================================
+     FONDO PERSONALIZADO
+     Cambia 'images/fondo.jpg' por el nombre de tu imagen.
+     Si la imagen no existe se ve el degradado de respaldo.
+     ========================================================= */
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(18, 14, 29, 0.40), rgba(18, 14, 29, 0.78)),
+      url('../images/Fondo.jpg'),
+      linear-gradient(160deg, var(--ciruela), var(--noche));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* =========================================================
+     PORTADA + BOTÓN PLAY
+     ========================================================= */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 5vh, 2.5rem);
+    padding:
+      max(2rem, env(safe-area-inset-top))
+      max(1.25rem, env(safe-area-inset-right))
+      max(5rem, env(safe-area-inset-bottom))
+      max(1.25rem, env(safe-area-inset-left));
+    text-align: center;
+  }
+  
+  .hero__title {
+    margin: 0;
+    max-width: 18ch;
+    font-family: var(--fuente-titulo);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 8vw, 4.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+  }
+  
+  .play {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--tam-play);
+    height: var(--tam-play);
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: var(--niebla);
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .play:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+  
+  .play:active {
+    transform: scale(0.94);
+  }
+  
+  .play__icon {
+    grid-area: 1 / 1;
+    width: 42%;
+    height: 42%;
+  }
+  
+  /* Triángulo ópticamente centrado */
+  .icon-play {
+    transform: translateX(6%);
+  }
+  
+  .icon-pause {
+    display: none;
+  }
+  
+  .play.is-playing .icon-play {
+    display: none;
+  }
+  
+  .play.is-playing .icon-pause {
+    display: block;
+  }
+  
+  /* Ondas que aparecen solo mientras suena la canción */
+  .play__ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--rosa);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .play.is-playing .play__ring {
+    animation: onda 2.4s ease-out infinite;
+  }
+  
+  .play.is-playing .play__ring--late {
+    animation-delay: 1.2s;
+  }
+  
+  @keyframes onda {
+    0%   { transform: scale(1);   opacity: 0.8; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  
+  .hero__hint {
+    margin: 0;
+    min-height: 1.5em;
+    max-width: 32ch;
+    font-size: 1rem;
+    color: var(--lila);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  }
+  
+  .hero__hint.is-error {
+    color: #ffd1dc;
+  }
+  
+  .hero__scroll {
+    position: absolute;
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.9rem;
+    color: var(--niebla);
+    text-decoration: none;
+    opacity: 0.85;
+  }
+  
+  .hero__scroll svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .hero__scroll:hover {
+    opacity: 1;
+  }
+  
+  /* =========================================================
+     TARJETAS
+     ========================================================= */
+  .cards-section {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding:
+      clamp(3rem, 8vw, 6rem)
+      max(1.25rem, env(safe-area-inset-right))
+      max(4rem, env(safe-area-inset-bottom))
+      max(1.25rem, env(safe-area-inset-left));
+  }
+  
+  /* Se aplica una sola vez, cuando el botón play muestra las tarjetas */
+  .cards-section.is-revealed {
+    animation: aparecer 0.9s ease both;
+  }
+  
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+  
+  .cards-section__title {
+    margin: 0 0 0.5rem;
+    font-family: var(--fuente-titulo);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    line-height: 1.1;
+    text-align: center;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .cards-section__lead {
+    margin: 0 0 clamp(1.75rem, 5vw, 3rem);
+    text-align: center;
+    color: var(--lila);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  }
+  
+  .cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: clamp(1rem, 3vw, 1.75rem);
+  }
+  
+  .cards > li {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* --- Tarjeta (es un <button>, por eso funciona con teclado) --- */
+  .card {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    perspective: 1100px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .card__inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.3, 0.7, 0.2, 1);
+  }
+  
+  .card.is-flipped .card__inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card__face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* ----- Frente ----- */
+  .card__front {
+    background: linear-gradient(150deg, var(--ciruela), #4a3677);
+  }
+  
+  .card__front img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card__label {
+    position: relative;
+    margin-top: auto;
+    padding: 3rem 1.1rem 1.1rem;
+    font-family: var(--fuente-titulo);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+    line-height: 1.15;
+    color: #fff;
+    background: linear-gradient(to top, rgba(18, 14, 29, 0.85), rgba(18, 14, 29, 0));
+  }
+  
+  /* ----- Reverso ----- */
+  .card__back {
+    transform: rotateY(180deg);
+    background: var(--niebla);
+    color: var(--noche);
+  }
+  
+  .card__back img {
+    flex: 0 0 52%;
+    width: 100%;
+    min-height: 0;
+    object-fit: cover;
+    background: linear-gradient(150deg, var(--lila), var(--rosa));
+  }
+  
+  .card__text {
+    flex: 1;
+    min-height: 0;
+    padding: 1rem 1.15rem 1.15rem;
+    overflow-y: auto;
+    font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+    line-height: 1.5;
+  }
+  
+  /* Si una imagen no carga, se oculta y se ve el color de respaldo */
+  img.is-missing {
+    visibility: hidden;
+  }
+  
+  /* =========================================================
+     PANTALLAS MUY PEQUEÑAS Y GRANDES
+     ========================================================= */
+  @media (max-width: 360px) {
+    .hero__hint {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .cards-section {
+      max-width: 1240px;
+    }
+  }
+  
+  /* Teléfonos en horizontal: la portada no necesita tanta altura */
+  @media (max-height: 480px) and (orientation: landscape) {
+    .hero {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem 2.5rem;
+      padding-bottom: 3.5rem;
+    }
+  
+    .hero__title {
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+    }
+  }
+  
+  /* =========================================================
+     ACCESIBILIDAD: menos movimiento
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  
+    .card__inner {
+      transition-duration: 0.01ms;
+    }
+  
+    .play.is-playing .play__ring,
+    .cards-section.is-revealed {
+      animation: none;
+    }
+  }
